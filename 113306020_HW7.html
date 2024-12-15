@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hayden's Profile</title>
+    <link rel="stylesheet" href="Hayden.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="photo-panel">
+                
+            </div>
+            
+            <h1 id="nameDisplay" align="center">HAYDEN</h1>
+            <button id="editButton">Edit</button>
+            <script>
+                const nameDisplay = document.getElementById('nameDisplay');
+                const editButton = document.getElementById('editButton');
+
+                editButton.addEventListener('click', () => {
+                    if (editButton.textContent === 'Edit') {
+                        const inputField = document.createElement('input');
+                        inputField.type = 'text';
+                        inputField.id = 'nameInput';
+                        inputField.value = nameDisplay.textContent;
+
+                        nameDisplay.textContent = '';
+                        nameDisplay.appendChild(inputField); 
+
+                        editButton.textContent = 'Save';
+                    } else {
+                        const nameInput = document.getElementById('nameInput');
+                        nameDisplay.textContent = nameInput.value;
+                        editButton.textContent = 'Edit';
+                    }
+                })
+            </script>
+
+            
+            <div class="text-content">
+                <div class="aboutMe">
+                    <h2>ABOUT ME</h2>
+                    <p>I am a freshman in the Department of Management Information Systems at National Chengchi University. I am very interested in studying programming and computer science fundamentals. I have experience in writing Java, HTML, CSS, JavaScript, and Python.</p>
+                </div>
+
+                <div class="contactInfo">
+                    <h2>CONTACT</h2>
+                    <p>113306020@g.nccu.edu.tw</p>
+                </div>                
+            </div>
+
+            <img src="nccuLogo.png" width="200px">
+        </div>
+        
+        <div class="right-panel">
+            <br><h2>Education</h2>
+            <ul>
+                <li><strong>2023- </strong>National Chengchi University,</li>
+                <li><strong>now </strong>Department of MIS, Computer Science</li>
+                <li><strong>2021- </strong>Banqiao Senior High School,</li>
+                <li><strong>2023 </strong>Participated in computer science club</li>
+                <li><strong>2018- </strong>Zhengshen Junior High School,</li>
+                <li><strong>2021 </strong>Started developing an interest in computer science</li>
+            </ul>
+            
+            <h2>Homework List</h2>
+            <ul>
+                <li><a href="https://github.com/hayden060504/HW1.git"> HW1 - https://github.com/hayden060504/HW1.git</li></a>
+                <li><a href="https://github.com/hayden060504/113306020_MIS_HW2.git"> HW2 - https://github.com/hayden060504/113306020_MIS_HW2.git</li></a>
+                <li><a href="https://github.com/hayden060504/113306020_MIS_HW3.git">HW3 - https://github.com/hayden060504/113306020_MIS_HW3.git</li></a>
+            </ul>
+            
+        <h2>Favorite Music</h2>
+
+        <div id="music-list" class="image-container">
+            <a href="https://open.spotify.com/track/3iDGRv7rqwDYRlHoTaVE96?si=804cdb4ca6534e71" target="_blank">
+                <img src="spotify.png" alt="Spotify"><br>Runaway-TZUYU
+            </a>
+            <a href="https://open.spotify.com/track/1ctHNAVFmDTtge6GpmuBlg?si=9a18c7bb947047e8" target="_blank">
+                <img src="spotify.png" alt="Spotify"><br>Runway-MiSaMo
+            </a>
+            <a href="https://open.spotify.com/track/6d1URgz5bJSIsCPsVyvItQ?si=a2cba3515e02480b" target="_blank">
+                <img src="spotify.png" alt="Spotify"><br>九彎十八拐-芒果醬
+            </a>
+            <a href="https://open.spotify.com/artist/6qqNVTkY8uBg9cP3Jd7DAH?si=6jJllCUzQseHbwOfxDpBYA" target="_blank">
+                <img src="spotify.png" alt="Spotify"><br>Blue-Billie Eilish
+            </a>
+        </div>
+
+        <button id="addButton">Add</button>
+
+        <div id="add-music-form">
+            <input type="text" id="music-link" placeholder="Music Link">
+            <input type="text" id="music-name" placeholder="Music Name">
+            <button id="submit-button">Submit</button>
+            <span id="warning">Please fill out all fields!</span>
+        </div>
+
+        <script>
+            const addButton = document.getElementById("addButton");
+            const addMusicForm = document.getElementById("add-music-form");
+            const submitButton = document.getElementById("submit-button");
+            const musicList = document.getElementById("music-list");
+            const warning = document.getElementById("warning");
+
+            addButton.addEventListener("click", () => {
+                addMusicForm.style.display = "flex";
+            });
+
+            submitButton.addEventListener("click", () => {
+                const musicLink = document.getElementById("music-link").value.trim();
+                const musicName = document.getElementById("music-name").value.trim();
+
+                if (musicLink && musicName) {
+                    const newMusic = document.createElement("a");
+                    newMusic.href = musicLink;
+                    newMusic.target = "_blank";
+
+                    const musicImage = document.createElement("img");
+                    musicImage.src = "spotify.png";
+                    musicImage.alt = "Spotify";
+
+                    newMusic.appendChild(musicImage);
+                    newMusic.appendChild(document.createElement("br"));
+                    newMusic.appendChild(document.createTextNode(musicName));
+
+                    musicList.appendChild(newMusic);
+
+                    document.getElementById("music-link").value = "";
+                    document.getElementById("music-name").value = "";
+                    addMusicForm.style.display = "none";
+                    warning.style.display = "none";
+                } else {
+                    warning.style.display = "inline";
+                }
+            });
+        </script>
+
+            <h6>Hope you will like this song too</h6>
+        </div>
+    </div>
+</body>
+</html>
